@@ -7,4 +7,11 @@ const setTimer = (num) => {
 
 };
 
+for (let num of myArgs) {
+  let inputNum = Number(num)
+  if (inputNum) {
+    setTimer(num);
+  }
+}
+
 
