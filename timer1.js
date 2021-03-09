@@ -4,7 +4,6 @@ const setTimer = (num) => {
   setTimeout(() => {
     process.stdout.write('\x07');
   }, num * 1000)
-
 };
 
 for (let num of myArgs) {
