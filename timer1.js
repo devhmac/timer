@@ -13,4 +13,3 @@ for (let num of myArgs) {
   }
 }
 
-
