@@ -1,11 +1,8 @@
-const readline = require('readline');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+const stdin = process.stdin;
 
-
+stdin.setRawMode(true);
+stdin.setEncoding('utf8');
 
 const setTimer = (num) => {
   setTimeout(() => {
@@ -24,16 +21,29 @@ const beepOnInput = (input) => {
   }
 }
 
-var recursiveAsyncReadLine = function () {
-  rl.question('Command: ', function (answer) {
+stdin.on('data', (key) => {
+  if (key === '\u0003') {
+    console.log("Thanks for using me, ciao!")
+    process.exit();
+  }
+  //process.stdout.write('.');
+  beepOnInput(key)
+});
 
 
-    //closing RL and returning from function.
-    beepOnInput(answer);
-    recursiveAsyncReadLine(); //Calling this function again to ask new question
-  });
-};
+// Trying to do this problem with readline, got everything working except the exit message on ctrl+c
+//let recursiveAsyncReadLine = function () {
+//   rl.question('Command: ', function (answer) {
+//     if (answer == '\u0003') {
+//       console.log('goodbye')
+//       return rl.close()
+//     }
+//     //closing RL and returning from function.
+//     beepOnInput(answer);
+//     recursiveAsyncReadLine(); //Calling this function again to ask new question
+//   });
+// };
 
-recursiveAsyncReadLine(); //we have to actually start our recursion somehow
+// recursiveAsyncReadLine(); //we have to actually start our recursion somehow
 
 
